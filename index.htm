@@ -16,17 +16,16 @@
     }
 
     /* Феміда на фоні */
-    body::before {
-      content: "";
+    .femida {
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 300px;
-      height: 300px;
+      width: 400px; /* збільшили */
+      height: 400px;
       background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Femida.png/480px-Femida.png') no-repeat center/contain;
-      opacity: 0.1;
+      opacity: 0.3; /* зменшена прозорість, але видно */
       transform: translate(-50%, -50%) rotate(0deg);
-      animation: rotateFemida 20s linear infinite;
+      animation: rotateFemida 25s linear infinite;
       pointer-events: none;
       z-index: 0;
     }
@@ -138,6 +137,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Анімована Феміда -->
+  <div class="femida"></div>
 
   <div class="top-bar">
     <div class="left">#254</div>
