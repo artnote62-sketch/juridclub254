@@ -8,9 +8,32 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Arial, sans-serif;
-      background-color: #fdf6ee; /* ніжний кремовий */
+      background-color: #fdf6ee;
       color: #333;
       line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Феміда на фоні */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Femida.png/480px-Femida.png') no-repeat center/contain;
+      opacity: 0.1;
+      transform: translate(-50%, -50%) rotate(0deg);
+      animation: rotateFemida 20s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes rotateFemida {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     /* Верхня панель */
@@ -31,7 +54,6 @@
       color: #1e3a8a;
     }
 
-    /* Анімаційний прапор */
     .flag {
       width: 80px;
       height: 48px;
@@ -54,10 +76,11 @@
       to   { transform: translateX(0); }
     }
 
-    /* Шапка */
     header {
       text-align: center;
       padding: 40px 20px;
+      z-index: 1;
+      position: relative;
     }
     header h1 {
       font-size: 2.2em;
@@ -69,11 +92,12 @@
       color: #444;
     }
 
-    /* Контент */
     section {
       max-width: 900px;
       margin: 40px auto;
       padding: 0 20px;
+      z-index: 1;
+      position: relative;
     }
     h2 {
       color: #1e3a8a;
@@ -87,7 +111,7 @@
     }
 
     .card {
-      background: white;
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -100,6 +124,8 @@
       text-align: center;
       padding: 15px;
       margin-top: 40px;
+      z-index: 1;
+      position: relative;
     }
     a {
       color: #1e3a8a;
@@ -109,38 +135,20 @@
       text-decoration: underline;
     }
 
-    /* Галерея */
-    .gallery {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .gallery img {
-      width: 280px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
   </style>
 </head>
 <body>
 
-  <!-- Верхня панель -->
   <div class="top-bar">
     <div class="left">#254</div>
     <div class="flag"></div>
   </div>
 
-  <!-- Шапка -->
   <header>
     <h1>Юридичний гурток спеціалізованої школи №254</h1>
     <p>Знання, які формують майбутнє</p>
   </header>
 
-  <!-- Опис -->
   <section>
     <h2>Про гурток</h2>
     <p>
@@ -161,22 +169,11 @@
     </ul>
   </section>
 
-  <!-- Контакти -->
   <section class="card">
     <h2>Контакти</h2>
     <p>Керівник гуртка: <strong>Компанець Артем Сергійович</strong></p>
     <p>Телефон: <a href="tel:+380660773704">066 077 37 04</a></p>
     <p>Telegram-група: <a href="https://t.me/+anSQn_qFVis0MGIy" target="_blank">Приєднатися</a></p>
-  </section>
-
-  <!-- Галерея школи -->
-  <section>
-    <h2>Наша школа</h2>
-    <div class="gallery">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/School_building_Kyiv.jpg" alt="Школа 254 Київ">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/School_in_Kyiv.jpg" alt="Школа Київ">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Modern_school_building.jpg" alt="Сучасна школа">
-    </div>
   </section>
 
   <footer>
