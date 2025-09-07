@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Юридичний гурток #254</title>
-  <!-- Підключення гарного шрифту -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: "Roboto", Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       background-color: #fdf6ee; /* ніжний кремовий */
       color: #333;
       line-height: 1.6;
@@ -33,29 +31,27 @@
       color: #1e3a8a;
     }
 
-    /* Анімований прапор */
+    /* Анімаційний прапор */
     .flag {
-      width: 50px;
-      height: 30px;
+      width: 80px;
+      height: 48px;
+      background: linear-gradient(to bottom, #0057b7 50%, #ffdd00 50%);
+      border: 1px solid #333;
+      position: relative;
+      overflow: hidden;
     }
-    .flag svg {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .wave path {
-      animation: wave 3s infinite ease-in-out;
-    }
-    .wave path:nth-child(2) {
-      animation-delay: 1s;
+    .flag::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(255,255,255,0.3) 100%);
+      animation: wave 2s infinite linear;
     }
     @keyframes wave {
-      0%, 100% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(-5px);
-      }
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
     }
 
     /* Шапка */
@@ -112,6 +108,22 @@
     a:hover {
       text-decoration: underline;
     }
+
+    /* Галерея */
+    .gallery {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 280px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
@@ -119,19 +131,7 @@
   <!-- Верхня панель -->
   <div class="top-bar">
     <div class="left">#254</div>
-    <div class="flag">
-      <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
-        <!-- Синя частина -->
-        <rect width="60" height="20" fill="#0057b7"/>
-        <!-- Жовта частина -->
-        <rect y="20" width="60" height="20" fill="#ffdd00"/>
-        <!-- Хвиля -->
-        <g class="wave">
-          <path d="M0 20 Q15 15 30 20 T60 20 V40 H0 Z" fill="rgba(0,0,0,0.05)"/>
-          <path d="M0 20 Q15 25 30 20 T60 20 V0 H0 Z" fill="rgba(255,255,255,0.2)"/>
-        </g>
-      </svg>
-    </div>
+    <div class="flag"></div>
   </div>
 
   <!-- Шапка -->
@@ -164,9 +164,19 @@
   <!-- Контакти -->
   <section class="card">
     <h2>Контакти</h2>
-    <p>Керівник гуртка: <strong>Іваненко О.О., вчитель правознавства</strong></p>
-    <p>Email: <a href="mailto:teacher@example.com">teacher@example.com</a></p>
-    <p>Telegram: <a href="https://t.me/juridclub">@juridclub</a></p>
+    <p>Керівник гуртка: <strong>Компанець Артем Сергійович</strong></p>
+    <p>Телефон: <a href="tel:+380660773704">066 077 37 04</a></p>
+    <p>Telegram-група: <a href="https://t.me/+anSQn_qFVis0MGIy" target="_blank">Приєднатися</a></p>
+  </section>
+
+  <!-- Галерея школи -->
+  <section>
+    <h2>Наша школа</h2>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/School_building_Kyiv.jpg" alt="Школа 254 Київ">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/School_in_Kyiv.jpg" alt="Школа Київ">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Modern_school_building.jpg" alt="Сучасна школа">
+    </div>
   </section>
 
   <footer>
